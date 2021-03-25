@@ -70,4 +70,8 @@ app.delete("/api/notes/:id", (req, res) => {
   }).then(res.redirect("back"))
 });
 
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "index.html"));
+  });
+
 app.listen(port, () => console.log(`App listening on port ${port}`));
