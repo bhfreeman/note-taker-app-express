@@ -17,7 +17,6 @@ app.use(express.static("public"));
 // Helper Functions
 async function readNotes() {
     const notes = await fs.promises.readFile('./db/db.json','utf8');
-    // console.log(notes);
     return notes;
 }
 
@@ -39,16 +38,7 @@ app.get("/notes", (req, res) => {
 //API Routes
 // Get route to view all notes
 app.get("/api/notes", (req, res) => {
-//   let notes;
-//   fs.readFile("./db/db.json", "utf8", (err, data) => {
-//     if (err) {
-//       console.error(err);
-//     }
-//     notes = JSON.parse(data);
-//     res.send(notes);
-//   });
     readNotes().then(data => res.send(data));
-
 });
 // Post route to save and create a new note
 app.post("/api/notes", (req, res) => {
@@ -62,10 +52,7 @@ app.delete("/api/notes/:id", (req, res) => {
   readNotes().then((data) => {
       const array = JSON.parse(data);
       const deleteIndex = array.findIndex(obj => obj["id"] === id);
-    //   console.log(array);
       array.splice(deleteIndex,1);
-    //   console.log(deleteIndex);
-    //   console.log(array)
       fs.writeFile('./db/db.json', JSON.stringify(array), (err) => err ? console.error(err): console.log("file written"));
   }).then(res.redirect("back"))
 });
