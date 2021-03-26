@@ -8,5 +8,8 @@ A simple app to take notes. Each note has a title and text. You can save note, d
 ## Github Link
 [Github](https://github.com/bhfreeman/note-taker-app-express)
 
+## Deployed Heroku App
+[Heroku](https://bhf-note-taker.herokuapp.com)
+
 ## Screenshot
 ![screenshot](./images/screen-shot.png)
